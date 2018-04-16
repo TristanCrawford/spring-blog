@@ -29,7 +29,7 @@ public class MathController {
 
     @GetMapping("/divide/{a}/by/{b}")
     @ResponseBody
-    public int divide(@PathVariable int a, @PathVariable int b) {
-        return a / b;
+    public String divide(@PathVariable int a, @PathVariable int b) {
+        return (b == 0) ? "Cannot divide by 0!" : String.valueOf(a / b);
     }
 }
