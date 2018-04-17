@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Dice Roll</title>
-</head>
+<head th:replace="partials :: head('Guess!')"/>
 <body>
-<h1>Guess A Number</h1>
-<a href="/roll-dice/1">1</a>
-<a href="/roll-dice/2">2</a>
-<a href="/roll-dice/3">3</a>
-<a href="/roll-dice/4">4</a>
-<a href="/roll-dice/5">5</a>
-<a href="/roll-dice/6">6</a>
+<nav th:replace="partials :: navbar"/>
+
+<div class="container">
+    <form id="guess-form" action="/roll-dice" method="get">
+        <label for="guess-num">Pick A Number Between 1 And 6!</label>
+        <input id="guess-num" type="number" min="1" max="6" value="1"/>
+        <input class="button button-outline" type="submit" value="Guess!"/>
+    </form>
+</div>
+
+<script th:replace="partials :: jquery"/>
+<script>
+    {
+        $('#guess-form').on('submit', () => {
+            $('#guess-form').attr('action', '/roll-dice/' + $('#guess-num').val());
+        });
+    }
+</script>
 </body>
 </html>

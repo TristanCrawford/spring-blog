@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"/>
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css"/>
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"/>
+    <link rel="stylesheet" href="/css/custom.css"/>
+</head>
+<body>
+<nav id="navbar" th:fragment="navbar">
+    <a href="/">Home</a>
+    <a href="/posts">Posts</a>
+    <a href="/login">Login</a>
+</nav>
+
+<footer th:fragment="footer">
+    <!--TODO - Footer-->
+</footer>
+
+<script th:fragment="jquery"
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+</body>
+</html>

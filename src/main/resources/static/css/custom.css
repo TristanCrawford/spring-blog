@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.container {
+    width: 75%;
+    margin: 0 auto;
+}
+
+#navbar {
+    width: 100%;
+    padding: .5rem 1rem;
+    margin-bottom: 2rem;
+    background: #F4F5F6;
+    border-bottom: 1px solid #D1D1D1;
+    display: grid;
+    grid-template: "l m r" 1fr / 1fr 1fr 1fr;
+    align-items: center;
+}
+
+@media (min-width: 40.0rem) {
+
+}
+
+@media (min-width: 80.0rem) {
+
+}
+
+@media (min-width: 120.0rem) {
+
+}

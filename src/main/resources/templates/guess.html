@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Guess</title>
-</head>
+<head th:replace="partials :: head('Results!')"/>
 <body>
-<h1>Numbers:</h1>
-<div th:each="number : ${numbers}">
-    <p>
-        <span th:text="${number}"></span>
-        <span th:switch="${guess}">
-        <span th:case="${number}">Correct :D</span>
-        <span th:case="*">Nope :(</span>
-    </span>
-    </p>
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <th>Dice Roll</th>
+            <th>Your Number</th>
+            <th>Match?</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="number : ${numbers}">
+            <td th:text="${number}"></td>
+            <td th:text="${guess}"></td>
+            <td th:if="${guess == number}">Yes :D</td>
+            <td th:if="${guess != number}">No :(</td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/roll-dice" class="button button-clear">Go Back</a>
 </div>
 </body>
 </html>

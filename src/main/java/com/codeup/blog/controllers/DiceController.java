@@ -21,7 +21,7 @@ public class DiceController {
 
     @GetMapping("/roll-dice")
     public String index() {
-        numbers = rollDice(20);
+        numbers = rollDice(6);
         return "dice";
     }
 
