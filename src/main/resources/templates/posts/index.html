@@ -12,7 +12,7 @@
                 <div class="card">
                     <h4 th:text="${post.getTitle()}"></h4>
                     <p class="body-preview" th:text="${post.getBody()}"></p>
-                    <a th:href="@{'/posts/' + ${posts.indexOf(post)}}">Read More</a>
+                    <a class="button button-clear" th:href="@{'/posts/' + ${posts.indexOf(post)}}">Read More</a>
                 </div>
             </div>
         </div>

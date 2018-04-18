@@ -8,9 +8,18 @@
     <div class="row">
         <div class="column"><h2 th:text="${post.getTitle()}"></h2></div>
     </div>
+    <hr/>
     <div class="row">
         <div class="column">
-            <p th:text="${post.getBody()}"></p>
+            <blockquote>
+                <p th:text="${post.getBody()}"></p>
+            </blockquote>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="column">
+            <a th:href="@{'/posts/' + ${post.getId()} + '/edit'}" class="button button-outline">Edit Post</a>
         </div>
     </div>
 </div>

@@ -4,10 +4,7 @@ import com.codeup.blog.models.Post;
 import com.codeup.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,24 +25,36 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    public String show(@PathVariable int id, Model model) {
+    public String show(@PathVariable long id, Model model) {
         try {
-            model.addAttribute("post",  postService.getPost(id));
+            model.addAttribute("post", postService.getPost(id));
         } catch (IndexOutOfBoundsException e) {
             model.addAttribute("post", new Post("Uh Oh...", "Looks like you tried to access an invalid posting!"));
         }
         return "posts/show";
     }
 
+    @GetMapping("/posts/{id}/edit")
+    public String getEdit(@PathVariable long id, Model model) {
+        model.addAttribute("post", postService.getPost(id));
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String postEdit(@PathVariable long id, @ModelAttribute Post post) {
+        postService.edit(id, post);
+        return "redirect:/posts/{id}";
+    }
+
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String getCreate() {
-        return "Create - GET";
+    public String getCreate(Model model) {
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String postCreate() {
-        return "Create - POST";
+    public String postCreate(@ModelAttribute Post post) {
+        postService.save(post);
+        return "redirect:/posts";
     }
 }

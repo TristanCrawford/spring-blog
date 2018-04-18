@@ -11,18 +11,12 @@
 <body>
 
 <nav id="navbar" th:fragment="navbar">
-    <a href="/">Home</a>
-    <a href="/posts">Posts</a>
-    <a href="/posts/create">Create A Post</a>
+    <a href="/posts">View</a>
+    <a href="/posts/create">Create</a>
 </nav>
 
-<footer th:fragment="footer">
-    <p th:text="'&copy; Tristan Crawford, 2018'"></p>
+<footer class="row" th:fragment="footer">
+    <p><em th:text="'Tristan Crawford, 2018'"></em></p>
 </footer>
-
-<script th:fragment="jquery"
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -25,10 +25,14 @@ public class PostService {
         return posts.get((int) id);
     }
 
-    public Post save(Post post) {
+    public void save(Post post) {
         post.setId((long) posts.size());
         posts.add(post);
-        return post;
+    }
+
+    public void edit(long id, Post post) {
+        posts.get((int) id).setTitle(post.getTitle());
+        posts.get((int) id).setBody(post.getBody());
     }
 
     private void createPosts() {

@@ -1,7 +1,12 @@
-body {
+html, body {
     margin: 0;
     padding: 0;
     text-align: center;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 15em;
 }
 
 .card {
@@ -24,15 +29,14 @@ body {
     margin-bottom: 2rem;
     background: #F4F5F6;
     border-bottom: 1px solid #D1D1D1;
-    display: grid;
-    grid-template: "l m r" 1fr / 1fr 1fr 1fr;
+    display: flex;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 @media (min-width: 40.0rem) {
-    .card {
+    .container {
         max-width: 50%;
-        margin: 0 auto;
     }
 }
 
