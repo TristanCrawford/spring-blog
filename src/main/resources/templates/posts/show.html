@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('Post')"/>
+<head th:replace="partials :: head('Post')"></head>
 <body>
-<nav th:replace="partials :: navbar"/>
+<nav th:replace="partials :: navbar"></nav>
 <div class="container">
 
     <div class="row">
-        <div class="column"><h1 th:text="${post.getTitle()}"></h1></div>
+        <div class="column"><h2 th:text="${post.getTitle()}"></h2></div>
     </div>
     <div class="row">
         <div class="column">

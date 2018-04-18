@@ -3,6 +3,7 @@ package com.codeup.blog.models;
 public class Post {
 
     private String title, body;
+    private Long id;
 
     public Post(String title, String body) {
         this.title = title;
@@ -23,5 +24,13 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
