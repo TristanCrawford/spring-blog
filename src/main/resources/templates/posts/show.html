@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head('Post')"/>
 <body>
+<nav th:replace="partials :: navbar"/>
+<div class="container">
 
+    <div class="row">
+        <div class="column"><h1 th:text="${post.getTitle()}"></h1></div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <p th:text="${post.getBody()}"></p>
+        </div>
+    </div>
+</div>
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>

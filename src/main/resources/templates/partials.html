@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="/css/custom.css"/>
 </head>
 <body>
+
 <nav id="navbar" th:fragment="navbar">
     <a href="/">Home</a>
     <a href="/posts">Posts</a>
-    <a href="/login">Login</a>
+    <a href="/posts/create">Create A Post</a>
 </nav>
 
 <footer th:fragment="footer">
-    <!--TODO - Footer-->
+    <p th:text="'&copy; Tristan Crawford, 2018'"></p>
 </footer>
 
 <script th:fragment="jquery"

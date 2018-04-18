@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head('All Posts')"/>
 <body>
-
+<nav th:replace="partials :: navbar"/>
+<div class="container">
+    <th:block th:each="post : ${posts}">
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <h4 th:text="${post.getTitle()}"></h4>
+                    <p class="body-preview" th:text="${post.getBody()}"></p>
+                    <a th:href="@{'/posts/' + ${posts.indexOf(post)}}">Read More</a>
+                </div>
+            </div>
+        </div>
+        <hr/>
+    </th:block>
+</div>
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>
