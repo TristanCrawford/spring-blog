@@ -42,7 +42,7 @@ public class PostController {
 
     @PostMapping("/posts/{id}/edit")
     public String postEdit(@PathVariable long id, @ModelAttribute Post post) {
-        postService.edit(id, post);
+        postService.save(post);
         return "redirect:/posts/{id}";
     }
 
@@ -55,6 +55,12 @@ public class PostController {
     @PostMapping("/posts/create")
     public String postCreate(@ModelAttribute Post post) {
         postService.save(post);
+        return "redirect:/posts";
+    }
+
+    @PostMapping("/posts/{id}/delete")
+    public String postDelete(@PathVariable long id) {
+        postService.delete(id);
         return "redirect:/posts";
     }
 }

@@ -1,6 +1,8 @@
 package com.codeup.blog.services;
 
 import com.codeup.blog.models.Post;
+import com.codeup.blog.models.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,32 +14,30 @@ public class PostService {
 
     private List<Post> posts;
 
-    public PostService() {
-        posts = new ArrayList<>();
-        createPosts();
+    private final PostRepository postDao;
+
+    public PostService(PostRepository postDao) {
+        this.postDao = postDao;
+//        createPosts();
     }
 
     public List<Post> getAllPosts() {
-        return posts;
+        return postDao.findAll();
     }
 
     public Post getPost(long id) {
-        return posts.get((int) id);
+        return postDao.findOne(id);
     }
 
     public void save(Post post) {
-        post.setId((long) posts.size());
-        posts.add(post);
+        postDao.save(post);
     }
 
-    public void edit(long id, Post post) {
-        posts.get((int) id).setTitle(post.getTitle());
-        posts.get((int) id).setBody(post.getBody());
+    public void delete(Post post) {
+        postDao.delete(post);
     }
 
-    private void createPosts() {
-        save(new Post("Post A", "This is the body of post A"));
-        save(new Post("Post B", "This is the body of post B"));
-        save(new Post("Post C", "This is the body of post C"));
+    public void delete(Long id) {
+        postDao.delete(id);
     }
 }
