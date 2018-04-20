@@ -11,6 +11,7 @@
             <div class="column">
                 <div class="card">
                     <h4 th:text="${post.getTitle()}"></h4>
+                    <em><h6 th:text="'Authored by ' + ${post.getAuthor().getUsername()}"></h6></em>
                     <p class="body-preview" th:text="${post.getBody()}"></p>
                     <a class="button button-clear" th:href="@{'/posts/' + ${post.getId()}}">Read More</a>
                 </div>

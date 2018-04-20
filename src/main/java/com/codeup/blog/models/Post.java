@@ -1,26 +1,40 @@
 package com.codeup.blog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Entity
-@Table(name="posts")
+@Entity @Table(name="posts")
 public class Post {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
 
     @Column(nullable = false, length = 100)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "LONGTEXT")
     private String body;
+
+    @OneToOne
+    private User author;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List<Images> images;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "post_categories",
+            joinColumns = {@JoinColumn(name = "post_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+    )
+    private List<Categories> categories;
 
     public Post() {}
 
-    public Post(String title, String body) {
+    public Post(String title, String body, User author) {
         this.title = title;
         this.body = body;
+        this.author = author;
     }
 
     public String getTitle() {
@@ -45,5 +59,13 @@ public class Post {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

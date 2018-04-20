@@ -11,9 +11,6 @@
         <textarea id="body" th:field="*{body}" th:value="${post.getBody()}"></textarea>
         <input class="button button-outline" type="submit" value="Save Post"/>
     </form>
-    <form th:action="@{'/posts/' + ${post.getId()} + '/delete'}" method="post" th:object="${post}">
-        <input class="button button-outline" type="submit" value="Delete Post"/>
-    </form>
 </div>
 <footer th:replace="partials :: footer"></footer>
 </body>

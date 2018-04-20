@@ -12,16 +12,13 @@ import java.util.List;
 @Service
 public class PostService {
 
-    private List<Post> posts;
-
     private final PostRepository postDao;
 
     public PostService(PostRepository postDao) {
         this.postDao = postDao;
-//        createPosts();
     }
 
-    public List<Post> getAllPosts() {
+    public Iterable<Post> getAllPosts() {
         return postDao.findAll();
     }
 
@@ -29,12 +26,8 @@ public class PostService {
         return postDao.findOne(id);
     }
 
-    public void save(Post post) {
-        postDao.save(post);
-    }
-
-    public void delete(Post post) {
-        postDao.delete(post);
+    public Post save(Post post) {
+        return postDao.save(post);
     }
 
     public void delete(Long id) {

@@ -1,6 +1,8 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
+import com.codeup.blog.models.User;
+import com.codeup.blog.models.UserService;
 import com.codeup.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +15,11 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+    private final UserService userService;
 
-    public PostController(PostService postService) {
+    public PostController(PostService postService, UserService userService) {
         this.postService = postService;
+        this.userService = userService;
     }
 
     @GetMapping("/posts")
@@ -29,7 +33,7 @@ public class PostController {
         try {
             model.addAttribute("post", postService.getPost(id));
         } catch (IndexOutOfBoundsException e) {
-            model.addAttribute("post", new Post("Uh Oh...", "Looks like you tried to access an invalid posting!"));
+            model.addAttribute("post", new Post("Uh Oh...", "Looks like you tried to access an invalid posting!", null));
         }
         return "posts/show";
     }
@@ -54,6 +58,7 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String postCreate(@ModelAttribute Post post) {
+        post.setAuthor(userService.getUser(1));
         postService.save(post);
         return "redirect:/posts";
     }
