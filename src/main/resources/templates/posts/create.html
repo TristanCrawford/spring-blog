@@ -9,6 +9,7 @@
         <input id="title" type="text" th:field="*{title}"/>
         <label for="body">Body:</label>
         <textarea id="body" th:field="*{body}"></textarea>
+        <input type="hidden" th:field="*{author}"/>
         <input class="button button-outline" type="submit" value="Create Post"/>
     </form>
 </div>
