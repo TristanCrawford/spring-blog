@@ -34,6 +34,14 @@ textarea {
     justify-content: space-evenly;
 }
 
+#navbar ul {
+    margin: 0;
+}
+
+#navbar li {
+    display: inline;
+}
+
 @media (min-width: 40.0rem) {
     .container {
         max-width: 50%;

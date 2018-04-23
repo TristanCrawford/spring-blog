@@ -13,14 +13,14 @@
 <nav id="navbar" th:fragment="navbar">
     <ul>
         <li>
-            <a href="/posts">View</a>
+            <a class="button button-clear" href="/posts">View Posts</a>
         </li>
         <li>
-            <a href="/posts/create">Create</a>
+            <a class="button button-clear" href="/posts/create">Create A Post</a>
         </li>
         <li>
-            <form th:action="@{/logout}">
-                <button class="button button-clear">Logout</button>
+            <form style="display: inline;" th:action="@{/logout}">
+                <input id="logout" value="Logout" type="submit" class="button button-clear"/>
             </form>
         </li>
     </ul>
