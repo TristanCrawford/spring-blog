@@ -11,8 +11,19 @@
 <body>
 
 <nav id="navbar" th:fragment="navbar">
-    <a href="/posts">View</a>
-    <a href="/posts/create">Create</a>
+    <ul>
+        <li>
+            <a href="/posts">View</a>
+        </li>
+        <li>
+            <a href="/posts/create">Create</a>
+        </li>
+        <li>
+            <form th:action="@{/logout}">
+                <button class="button button-clear">Logout</button>
+            </form>
+        </li>
+    </ul>
 </nav>
 
 <footer th:fragment="footer">

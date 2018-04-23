@@ -3,5 +3,5 @@ package com.codeup.blog.models;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Long> {
-//    TODO
+    User findByUsername(String username);
 }

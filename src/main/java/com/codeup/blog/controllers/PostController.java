@@ -1,15 +1,11 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
-import com.codeup.blog.models.User;
-import com.codeup.blog.models.UserService;
+import com.codeup.blog.services.UserService;
 import com.codeup.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Arrays;
-import java.util.List;
 
 @Controller
 public class PostController {

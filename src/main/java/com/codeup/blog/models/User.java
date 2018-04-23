@@ -8,14 +8,23 @@ public class User {
     @Id @GeneratedValue
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, length = 32)
+    @Column(nullable = false, length = 32, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
+
+    public User() {}
+
+    public User(User copy) {
+        this.id = copy.id;
+        this.email = copy.email;
+        this.username = copy.email;
+        this.password = copy.password;
+    }
 
     public long getId() {
         return id;
