@@ -1,11 +1,17 @@
 package com.codeup.blog.controllers;
 
+import com.codeup.blog.SecurityConfiguration;
 import com.codeup.blog.models.Post;
+import com.codeup.blog.models.User;
 import com.codeup.blog.services.UserService;
 import com.codeup.blog.services.PostService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class PostController {
@@ -53,15 +59,25 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String postCreate(@ModelAttribute Post post) {
-        post.setAuthor(userService.getUser(1));
+    public String postCreate(@Valid Post post, Errors validation, Model model) {
+
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("post", post);
+            return "posts/create";
+        }
+
+        User authedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setAuthor(authedUser);
         postService.save(post);
         return "redirect:/posts";
     }
 
     @PostMapping("/posts/{id}/delete")
     public String postDelete(@PathVariable long id) {
-        postService.delete(id);
+        User authedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (authedUser.getId() == postService.getPost(id).getAuthor().getId())
+            postService.delete(id);
         return "redirect:/posts";
     }
 }

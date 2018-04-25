@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:fragment="head(title)">
     <meta charset="UTF-8"/>
     <title th:text="${title}"></title>
@@ -12,14 +13,12 @@
 
 <nav id="navbar" th:fragment="navbar">
     <ul>
-        <li>
-            <a class="button button-clear" href="/posts">View Posts</a>
-        </li>
-        <li>
-            <a class="button button-clear" href="/posts/create">Create A Post</a>
-        </li>
-        <li>
-            <form style="display: inline;" th:action="@{/logout}">
+        <li><a class="button button-clear" href="/posts">View Posts</a></li>
+        <li sec:authorize="isAuthenticated()"><a class="button button-clear" href="/posts/create">Create A Post</a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="/login" class="button button-clear">Login</a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="/sign-up" class="button button-clear">Register</a></li>
+        <li sec:authorize="isAuthenticated()">
+            <form style="display: inline;" th:action="@{/logout}" th:method="POST">
                 <input id="logout" value="Logout" type="submit" class="button button-clear"/>
             </form>
         </li>

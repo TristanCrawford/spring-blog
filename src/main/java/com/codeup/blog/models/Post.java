@@ -1,5 +1,7 @@
 package com.codeup.blog.models;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,9 +12,11 @@ public class Post {
     private Long id;
 
     @Column(nullable = false, length = 100)
+    @NotBlank(message = "Post Must Have A Title.")
     private String title;
 
     @Column(nullable = false, columnDefinition = "LONGTEXT")
+    @NotBlank(message = "Post Must Have A Body.")
     private String body;
 
     @OneToOne
