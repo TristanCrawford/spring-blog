@@ -1,12 +1,14 @@
 html, body {
-    margin: 0;
-    padding: 0;
     text-align: center;
 }
 
 textarea {
     resize: vertical;
     min-height: 15em;
+}
+
+form {
+    margin: 0;
 }
 
 .card {
@@ -25,26 +27,20 @@ textarea {
 
 #navbar {
     width: 100%;
-    padding: .5rem 1rem;
+    padding: .5rem 0;
     margin-bottom: 2rem;
     background: #F4F5F6;
     border-bottom: 1px solid #D1D1D1;
+
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-#navbar ul {
-    margin: 0;
-}
-
-#navbar li {
-    display: inline;
+    flex-flow: row wrap-reverse;
+    justify-content: center;
+    align-items: baseline;
 }
 
 @media (min-width: 40.0rem) {
     .container {
-        max-width: 50%;
+        max-width: 30%;
     }
 }
 
